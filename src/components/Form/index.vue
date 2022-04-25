@@ -14,7 +14,7 @@
 
       <label for="contact">Contact</label>
       <input
-        type="tel"
+        type="text"
         id="contact"
         v-model="contact.phone_number"
         :disabled="disable"
@@ -26,7 +26,10 @@
       <div class="form-button">
         <button v-if="isEditContact" type="save">Save</button>
         <button v-else type="save">Create</button>
-        <button v-show="isEditContact" @click.prevent="enableInput()">
+        <button
+          v-show="isEditContact"
+          @click.prevent="() => (this.disable = !this.disable)"
+        >
           Edit
         </button>
       </div>
@@ -40,6 +43,8 @@ import Contact from '../../models/ContactClass'
 import axios from '../../utils/axios'
 
 const URL_NAME = 'Create Contact'
+//TODO: usar o Watch
+
 export default {
   name: 'Form',
   data() {
@@ -55,6 +60,13 @@ export default {
   },
 
   methods: {
+    /**
+     * @function verifyPage
+     * Essa função verifica se o formulário
+     * vai usado para edição dos dados ou
+     * criação de um novo contato
+     */
+
     verifyPage() {
       const local = localStorage.getItem('contact')
       let path = this.$route.name
@@ -64,16 +76,19 @@ export default {
         this.contact = JSON.parse(local)
       }
     },
-    enableInput() {
-      this.disable = false
-    },
     async createContact() {
       const data = await axios.post('/contact', this.contact)
       if (data.statusText == 'OK') {
         alert('Contact created!!')
       }
-      this.$router.push('/contacts')
+      this.$router.push('/')
     },
+
+    async updateContact() {
+      const data = await axios.post('/contact', this.contact)
+      console.log(data)
+    },
+
     async formDispatch() {
       if (this.isEditContact) {
         //.
@@ -96,7 +111,6 @@ export default {
   width: 50%;
   gap: 5px;
 }
-
 /*CSS itens */
 .form label,
 input,

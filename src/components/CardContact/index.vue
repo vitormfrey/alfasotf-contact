@@ -10,7 +10,7 @@
       <router-link to="/contact/details" @click="setContact"
         >More information</router-link
       >
-      <button>Delete</button>
+      <button @click="deleteContact()">Delete</button>
     </div>
   </div>
 </template>
@@ -24,6 +24,9 @@ export default {
   methods: {
     setContact() {
       this.$store.dispatch('setContact', this.contact)
+    },
+    deleteContact() {
+      this.$store.dispatch('deleteContact', this.contact.id)
     }
   }
 }

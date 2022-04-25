@@ -1,15 +1,15 @@
 /* eslint-disable prettier/prettier */
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'Home',
+  //   component: Home
+  // },
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/contacts',
     name: 'Contacts',
     component: () => import('../views/Contacts.vue')
   },

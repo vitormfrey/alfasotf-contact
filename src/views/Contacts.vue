@@ -1,5 +1,6 @@
 <template>
   <Container>
+    <h1>Contact list</h1>
     <CardContact
       v-for="contact in $contactList"
       :key="contact.id"
@@ -50,5 +51,13 @@ export default {
   color: #e1e8ef;
   font-size: 16px;
   text-decoration: none;
+}
+h1 {
+  font-family: 'Montserrat', sans-serif;
+}
+h1::first-letter {
+  font-weight: bold;
+  color: #0451a5;
+  font-size: 38px;
 }
 </style>
