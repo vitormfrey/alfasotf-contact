@@ -1,7 +1,8 @@
 <template>
   <div class="card-container">
     <div class="card">
-      <img src="../../assets/user.png" />
+      <img v-if="contact.image != null" :src="contact.image" />
+      <img v-else src="../../assets/user.png" />
       <p class="card-name">Name: {{ contact.name }}</p>
       <p class="card-email">E-mail: {{ contact.email }}</p>
       <p class="card-phone-number">Phone: {{ contact.phone_number }}</p>

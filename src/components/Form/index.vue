@@ -21,7 +21,13 @@
       />
 
       <label for="picture">Picture</label>
-      <input type="text" id="picture" :disabled="disable" />
+      <input
+        type="text"
+        id="picture"
+        v-model="contact.image"
+        :disabled="disable"
+      />
+      <img v-show="contact.image" :src="contact.image" />
 
       <div class="form-button">
         <button v-if="isEditContact" type="save">Save</button>
@@ -49,7 +55,7 @@ export default {
   name: 'Form',
   data() {
     return {
-      contact: new Contact('', '', '', ''),
+      contact: new Contact('', '', '', null),
       isEditContact: false,
       disable: false
     }
@@ -154,5 +160,10 @@ input,
 }
 .form-button button[type='save']:hover {
   background-color: #2aae47;
+}
+img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
 }
 </style>
