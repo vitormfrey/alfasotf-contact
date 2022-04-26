@@ -12,3 +12,8 @@ Nesse projeto foi criado uma página que exibe uma lista de contatos, onde é po
 - [Master](https://github.com/vitormfrey/alfasotf-contact/tree/master)</br>
   Nessa branch tem o projeto mais atualizado, dando sequência ao desafio após a data 
   do dia 23/04/2022 e com deploy na vercel para testes mais completos. 
+### Implementações:
+- Criar contato 
+- Deletar contato 
+### Pendente 
+- Editar contato. Falta criar método no back-end e depois tratar com o VUEX no front
