@@ -14,11 +14,13 @@ export const contact = {
       state.contact = payload
     },
     DELETE_CONTACT(state, payload) {
-      const index = state.contacts.findIndex(
-        (contact) => contact.id === payload
-      )
-      console.log(index)
-      state.contacts.pop(index)
+      function removeContact(arr, value) {
+        return arr.filter(function (contact) {
+          return contact.id != value
+        })
+      }
+      let result = removeContact(state.contacts, payload)
+      state.contacts = result
     }
   },
   actions: {
