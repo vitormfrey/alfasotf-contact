@@ -11,23 +11,39 @@
       <router-link to="/contact/details" @click="setContact"
         >More information</router-link
       >
-      <button @click="deleteContact()">Delete</button>
+      <button @click="showModal = !showModal">Delete</button>
+      <Modal
+        v-if="showModal"
+        @close="showModal = !showModal"
+        @delete="deleteContact"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import Modal from '../Modal/index.vue'
+
 export default {
   name: 'CardContact',
   props: {
     contact: Object
   },
+  components: { Modal },
+
+  data() {
+    return {
+      showModal: false
+    }
+  },
+
   methods: {
     setContact() {
       this.$store.dispatch('setContact', this.contact)
     },
-    deleteContact() {
+    async deleteContact() {
       this.$store.dispatch('deleteContact', this.contact.id)
+      this.showModal = !this.showModal
     }
   }
 }
@@ -44,6 +60,8 @@ export default {
   margin-top: 25px;
   padding: 10px;
   transition: ease-in-out 0.3s;
+  box-shadow: #00000028 0px 0px 11px 4px;
+  border-radius: 5px;
 }
 .card {
   display: flex;
@@ -103,6 +121,5 @@ img {
 }
 .card-container:hover {
   background-color: #dbdbdb;
-  border-radius: 5px;
 }
 </style>

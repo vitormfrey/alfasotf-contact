@@ -2,21 +2,31 @@
   <div class="form-container">
     <form @submit.prevent="formDispatch" class="form">
       <label for="name">Name</label>
-      <input type="text" id="name" v-model="contact.name" :disabled="disable" />
+
+      <input
+        type="text"
+        id="name"
+        v-model="contact.name"
+        :disabled="disable"
+        placeholder="Ex. Charles Xavier"
+      />
 
       <label for="email">E-mail</label>
       <input
         type="email"
         id="email"
         v-model="contact.email"
+        placeholder="Ex. contact@contact.com"
         :disabled="disable"
       />
 
       <label for="contact">Contact</label>
       <input
-        type="text"
+        type="tel"
         id="contact"
         v-model="contact.phone_number"
+        pattern="([0-9]{2})[0-9]{5}-[0-9]{4}"
+        placeholder="Ex. 1988888-9999"
         :disabled="disable"
       />
 
@@ -25,6 +35,7 @@
         type="text"
         id="picture"
         v-model="contact.image"
+        placeholder="Ex. https://www.yourImageLink.com"
         :disabled="disable"
       />
       <img v-show="contact.image" :src="contact.image" />
@@ -91,13 +102,16 @@ export default {
     },
 
     async updateContact() {
-      const data = await axios.post('/contact', this.contact)
-      console.log(data)
+      const res = await axios.put('/contact/update', this.contact)
+      if (res.statusText == 'OK') {
+        alert(`${res.data.result}`)
+      }
+      this.$router.push('/')
     },
 
     async formDispatch() {
       if (this.isEditContact) {
-        //.
+        this.updateContact()
       } else await this.createContact()
     }
   }
