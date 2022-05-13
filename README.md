@@ -1,24 +1,19 @@
-# vue-contacts
+# Contact Alfasoft
 
 ## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Nesse projeto foi criado uma página que exibe uma lista de contatos, onde é possível criar um novo contato, deletar e editar um contato existente. 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### Link para o site https://alfasotf-contact.vercel.app/#/
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Branch:
+- [Teste 23-04-2022](https://github.com/vitormfrey/alfasotf-contact/tree/teste-23-04)</br>
+  Nessa branch os arquivos estão iguais aos da entrega do desafio. 
+- [Master](https://github.com/vitormfrey/alfasotf-contact/tree/master)</br>
+  Nessa branch tem o projeto mais atualizado, dando sequência ao desafio após a data 
+  do dia 23/04/2022 e com deploy na vercel para testes mais completos. 
+### Implementações:
+- Criar contato 
+- Deletar contato 
+### Pendente 
+- Editar contato. Falta criar método no back-end e depois tratar com o VUEX no front
